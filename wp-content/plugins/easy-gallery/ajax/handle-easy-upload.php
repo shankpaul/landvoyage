@@ -28,7 +28,7 @@ function handle_easy_upload()
 									// @fixme: wp checks the file extension....
 									$filetype = wp_check_filetype( basename( $filename ), null );
 									$filetitle = preg_replace('/\.[^.]+$/', '', basename( $filename ) );
-									$filename = $filetitle . '.' . $filetype['ext'];
+									$filename = $filetitle . '.' . strtolower($filetype['ext']);
 									$upload_dir = wp_upload_dir();
 							
 									/**
@@ -39,7 +39,7 @@ function handle_easy_upload()
 								
 									while ( file_exists( $upload_dir['path'] .'/' . $filename ) ) 
 									{
-									  $filename = $filetitle . '_' . $i . '.' . $filetype['ext'];
+									  $filename = $filetitle . '_' . $i . '.' . strtolower($filetype['ext']);
 									  $i++;
 									}
 									

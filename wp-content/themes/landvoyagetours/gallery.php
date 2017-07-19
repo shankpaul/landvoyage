@@ -64,17 +64,12 @@
     <div class="row">
       <div class="col-md-12">
       
-      <div class="home-logo"> <a href="index.html"><img src="images/logo-main.jpg" alt="" class="img-responsive"></a> </div>
+      <div class="home-logo"> <a href="<?php echo get_permalink(6); ?>"><img src="images/logo-main.jpg" alt="" class="img-responsive"></a> </div>
       
         <div class="mobilemenu">
           <nav>
             <ul>
-              <li><a href="index.html">Home</a> <span>&#9830;</span></li>
-              <li><a href="aboutus.html">About Us</a> <span>&#9830;</span></li>
-              <li><a href="packages.html">Packages</a> <span>&#9830;</span></li>
-              <li><a href="testimonials.html">Testimonials</a> <span>&#9830;</span></li>
-			   <li><a href="gallery.html">Gallery</a> <span>&#9830;</span></li>
-              <li><a href="contact-us.html">Contact Us</a></li>
+             <?php get_header(); ?>
             </ul>
           </nav>
         </div>
@@ -133,9 +128,17 @@
   
     <div class="container">
 		<div class="gal-filtr">
-			<ul>
-				<li><a href="<?php echo get_permalink(10).'?album=1' ?>"> <img src="images/gallery/gal-south-india.jpg"/>  <p>South India</p></a></li>
-				<li><a href="<?php echo get_permalink(10).'?album=2' ?>"><img src="images/gallery/gal-north-india.jpg"/> <p>North India</p></a></li>
+			<ul><?php
+            $albums = array(); 
+            if(function_exists('get_easy_albums')){
+                $albums = get_easy_albums();
+                //var_dump($albums);
+            }
+            ?>
+            <?php foreach($albums as $album) { ?>
+
+				      <li><a href="<?php echo add_query_arg('album',$album->album_id,get_permalink(10));  ?>"> <img src="<?php echo $album->album_cover;   ?>  "/>  <p><?php echo $album->name; ?></p></a></li>
+				    <?php } ?>
 			</ul>
 		</div>
 		

@@ -4,7 +4,8 @@
 <?php
                 //$album_id = 1;
                 $album_id = $_REQUEST['album'];
-                // $album = get_easy_album($album_id); 
+                 // $album = get_easy_album($album_id); 
+                $album = get_easy_album($album_id); 
                  ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,17 +69,12 @@
     <div class="row">
       <div class="col-md-12">
       
-      <div class="home-logo"> <a href="index.html"><img src="images/logo-main.jpg" alt="" class="img-responsive"></a> </div>
+      <div class="home-logo"> <a href="<?php echo get_permalink(6); ?>"><img src="images/logo-main.jpg" alt="" class="img-responsive"></a> </div>
       
         <div class="mobilemenu">
           <nav>
             <ul>
-              <li><a href="index.html">Home</a> <span>&#9830;</span></li>
-              <li><a href="aboutus.html">About Us</a> <span>&#9830;</span></li>
-              <li><a href="packages.html">Packages</a> <span>&#9830;</span></li>
-              <li><a href="testimonials.html">Testimonials</a> <span>&#9830;</span></li>
-			   <li><a href="gallery.html">Gallery</a> <span>&#9830;</span></li>
-              <li><a href="contact-us.html">Contact Us</a></li>
+             <?php get_header(); ?>
             </ul>
           </nav>
         </div>
@@ -88,7 +84,7 @@
 </div>
     
  <div class="inner-bnr-block gallery-north-india-bnr">
- 	<h3>South India</h3>
+ 	<h3><?php echo $album->name; ?></h3>
  </div>   
     
     
